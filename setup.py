@@ -15,6 +15,7 @@ import os
 import shutil
 import sys
 import traceback
+from Cython.Build import cythonize
 
 from setuptools import setup, find_packages, Extension, Feature
 
@@ -28,6 +29,7 @@ if sys.platform == 'win32' and sys.version_info > (2, 6):
    # find the compiler
    ext_errors += (IOError,)
 
+cythonize('http_parser/parser.pyx')
 http_parser = load_source("http_parser", os.path.join("http_parser",
         "__init__.py"))
 
